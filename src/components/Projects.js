@@ -1,17 +1,63 @@
 import React, { useEffect } from 'react';
-import { animationUtils } from '../utils/animations';
-import { projects } from '../utils/data';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   useEffect(() => {
-    // Initialize hover animations for project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-      animationUtils.hover.projectCard(card);
+    // Simple scroll animation for project cards
+    gsap.utils.toArray('.project-card').forEach((card, index) => {
+      gsap.from(card, {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        delay: index * 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
     });
   }, []);
 
-  const featuredProjects = projects.filter(project => project.featured).slice(0, 4);
+  const projects = [
+    {
+      id: 1,
+      title: "E-Commerce Platform",
+      description: "A modern, fully responsive e-commerce platform built with React and Node.js",
+      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      github: "https://github.com",
+      demo: "https://demo.com"
+    },
+    {
+      id: 2,
+      title: "AI-Powered Analytics Dashboard",
+      description: "Real-time analytics dashboard with machine learning insights",
+      tech: ["React", "Python", "TensorFlow", "D3.js"],
+      github: "https://github.com",
+      demo: "https://demo.com"
+    },
+    {
+      id: 3,
+      title: "Mobile Banking App",
+      description: "Secure mobile banking application with biometric authentication",
+      tech: ["React Native", "Node.js", "PostgreSQL", "AWS"],
+      github: "https://github.com",
+      demo: "https://demo.com"
+    },
+    {
+      id: 4,
+      title: "IoT Smart Home System",
+      description: "Complete IoT ecosystem for smart home automation and monitoring",
+      tech: ["React", "Arduino", "Python", "MQTT"],
+      github: "https://github.com",
+      demo: "https://demo.com"
+    }
+  ];
 
   return (
     <section className="projects py-20 px-4 bg-gray-50 fade-in-section">
@@ -28,24 +74,22 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="stagger-container grid md:grid-cols-2 gap-8">
-          {featuredProjects.map((project, index) => (
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
             <div 
               key={project.id}
-              className="project-card stagger-item group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500"
+              className="project-card group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500"
             >
               {/* Project Image */}
-              <div className="project-image relative aspect-video overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
-                  <span className="text-4xl font-sora font-bold text-gray-500">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
+              <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
+                <span className="text-4xl font-bold text-gray-500 font-sora">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
                 
                 {/* Hover Overlay */}
-                <div className="project-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="project-title text-white text-xl font-sora font-bold mb-2">
+                    <h3 className="text-white text-xl font-bold mb-2 font-sora">
                       {project.title}
                     </h3>
                     
@@ -72,7 +116,7 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-xl font-sora font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 font-sora">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 mb-4 leading-relaxed font-inter">
@@ -91,20 +135,14 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="absolute inset-0 rounded-2xl shadow-lg shadow-dark-red/20"></div>
-              </div>
             </div>
           ))}
         </div>
 
         {/* View All Projects Button */}
         <div className="text-center mt-16">
-          <button className="btn-primary relative overflow-hidden group">
-            <span className="relative z-10">View All Projects</span>
-            <div className="btn-sheen absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12"></div>
+          <button className="px-8 py-3 bg-gradient-to-r from-red-800 to-red-600 text-white rounded-lg hover:from-red-900 hover:to-red-700 transition-all duration-300 transform hover:scale-105 font-inter">
+            View All Projects
           </button>
         </div>
       </div>

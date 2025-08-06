@@ -1,22 +1,37 @@
 import React, { useEffect, useRef } from 'react';
-import { animationUtils } from '../utils/animations';
+import { gsap } from 'gsap';
 import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
+  const heroRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
 
   useEffect(() => {
-    // Initialize hero animations
-    const tl = animationUtils.hero.init();
+    const hero = heroRef.current;
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+
+    if (!hero || !title || !subtitle) return;
+
+    // Set initial states
+    gsap.set([title, subtitle], { opacity: 0, y: 50 });
+
+    // Create animation timeline
+    const tl = gsap.timeline({ delay: 0.5 });
     
-    // Split text animation for title
-    if (titleRef.current) {
-      animationUtils.splitText.init(titleRef.current, {
-        delay: 3.5,
-        stagger: 0.05
-      });
-    }
+    tl.to(title, {
+      duration: 1.2,
+      y: 0,
+      opacity: 1,
+      ease: 'power3.out'
+    })
+    .to(subtitle, {
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: 'power2.out'
+    }, '-=0.6');
 
     return () => {
       tl.kill();
@@ -24,54 +39,42 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* ASCII Grid Background */}
-      <div className="ascii-grid"></div>
-      
-      {/* Parallax Background */}
-      <div className="parallax-bg absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-50"></div>
-      
+    <section ref={heroRef} className="hero relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
       {/* Main Content */}
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Hero Title */}
         <h1 
           ref={titleRef}
-          className="hero-title text-5xl md:text-7xl lg:text-8xl font-sora font-bold text-gray-900 mb-6 leading-tight"
+          className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight font-sora"
         >
           Nicolás Calero
         </h1>
         
         {/* Hero Subtitle */}
-        <div className="hero-subtitle space-y-2">
-          <p className="text-xl md:text-2xl font-inter text-gray-700 mb-2">
+        <div ref={subtitleRef} className="hero-subtitle space-y-4">
+          <p className="text-xl md:text-2xl text-gray-700 mb-2 font-inter">
             Software Engineer & Creative Technologist
           </p>
-          <p className="text-lg font-inter text-gray-600 uppercase tracking-wider">
+          <p className="text-lg text-gray-600 uppercase tracking-wider font-inter">
             From Bogotá, Colombia
           </p>
-        </div>
-        
-        {/* CTA Button */}
-        <div className="hero-cta mt-12">
-          <button className="btn-primary relative overflow-hidden group">
-            <span className="relative z-10">View My Work</span>
-            <div className="btn-sheen absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12"></div>
-          </button>
+          
+          {/* CTA Button */}
+          <div className="mt-8">
+            <button className="px-8 py-3 bg-gradient-to-r from-red-800 to-red-600 text-white rounded-lg hover:from-red-900 hover:to-red-700 transition-all duration-300 transform hover:scale-105 font-inter">
+              View My Work
+            </button>
+          </div>
         </div>
       </div>
       
       {/* Scroll Indicator */}
-      <div className="hero-scroll absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="scroll-indicator flex flex-col items-center text-gray-600">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-600">
+        <div className="flex flex-col items-center">
           <span className="text-xs uppercase tracking-wider mb-2 font-inter">Scroll</span>
           <ChevronDown className="w-6 h-6 animate-bounce" />
         </div>
       </div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-dark-red rounded-full animate-float"></div>
-      <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-light-red rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-dark-red rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
     </section>
   );
 };

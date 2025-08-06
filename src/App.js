@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { initAnimations } from './utils/animations';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Components
 import Preloader from './components/Preloader';
@@ -8,19 +9,38 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
-import CustomCursor from './components/CustomCursor';
-import ASCIIBackground from './components/ASCIIBackground';
-import ThemeToggle from './components/ThemeToggle';
 
 // Styles
 import './index.css';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Initialize animations after component mounts
-    initAnimations();
+    // Initialize basic scroll animations
+    gsap.utils.toArray('.fade-in-section').forEach(section => {
+      gsap.from(section, {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    // Simulate preloader timing
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handlePreloaderComplete = () => {
@@ -28,16 +48,7 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {/* ASCII Background */}
-      <ASCIIBackground />
-      
-      {/* Custom Cursor */}
-      <CustomCursor />
-      
-      {/* Theme Toggle */}
-      <ThemeToggle />
-      
+    <div className="App relative">
       {/* Preloader */}
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       

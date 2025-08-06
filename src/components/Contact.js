@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { animationUtils } from '../utils/animations';
-import { socialLinks } from '../utils/data';
-import { Mail, Github, Linkedin, Send, Twitter, Dribbble } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Github, Linkedin, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,13 +9,6 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-
-  useEffect(() => {
-    // Initialize button hover animations
-    document.querySelectorAll('.contact-btn').forEach(btn => {
-      animationUtils.hover.button(btn);
-    });
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,19 +33,26 @@ const Contact = () => {
     }, 2000);
   };
 
-  // Icon mapping
-  const iconMap = {
-    Mail,
-    Github,
-    Linkedin,
-    Twitter,
-    Dribbble
-  };
-
-  const socialLinksWithIcons = socialLinks.map(link => ({
-    ...link,
-    iconComponent: iconMap[link.icon]
-  }));
+  const socialLinks = [
+    {
+      name: 'Email',
+      icon: Mail,
+      href: 'mailto:nicolas@example.com',
+      label: 'nicolas@example.com'
+    },
+    {
+      name: 'GitHub',
+      icon: Github,
+      href: 'https://github.com/nicolascalero',
+      label: '@nicolascalero'
+    },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      href: 'https://linkedin.com/in/nicolascalero',
+      label: '/in/nicolascalero'
+    }
+  ];
 
   return (
     <section className="contact py-20 px-4 bg-gray-50 fade-in-section">
@@ -85,18 +83,18 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="stagger-container space-y-4">
-              {socialLinksWithIcons.slice(0, 3).map((link, index) => (
+            <div className="space-y-4">
+              {socialLinks.map((link, index) => (
                 <a
                   key={index}
-                  href={link.url}
-                  className="stagger-item contact-btn flex items-center space-x-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  href={link.href}
+                  className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-dark-red to-light-red rounded-lg flex items-center justify-center">
-                    <link.iconComponent className="w-6 h-6 text-white" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-red-800 to-red-600 rounded-lg flex items-center justify-center">
+                    <link.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-sora font-bold text-gray-900 group-hover:text-dark-red transition-colors">
+                    <div className="font-bold text-gray-900 group-hover:text-red-800 transition-colors font-sora">
                       {link.name}
                     </div>
                     <div className="text-sm text-gray-600 font-inter">
@@ -111,7 +109,7 @@ const Contact = () => {
             <div className="p-6 bg-white rounded-xl shadow-lg">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-sora font-bold text-gray-900">Available for new projects</span>
+                <span className="font-bold text-gray-900 font-sora">Available for new projects</span>
               </div>
               <p className="text-sm text-gray-600 font-inter">
                 Currently accepting new freelance projects and collaboration opportunities.
@@ -186,7 +184,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="contact-btn w-full btn-primary relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-3 bg-gradient-to-r from-red-800 to-red-600 text-white rounded-lg hover:from-red-900 hover:to-red-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed font-inter"
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2">
                   {isSubmitting ? (

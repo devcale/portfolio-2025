@@ -1,40 +1,71 @@
 import React, { useEffect } from 'react';
-import { animationUtils } from '../utils/animations';
-import { skillCategories, experiences } from '../utils/data';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
   useEffect(() => {
-    // Initialize skill animations
-    document.querySelectorAll('.skill-item').forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        animationUtils.hover.button(item);
-      });
-    });
-
     // Animate skill bars on scroll
     const skillBars = document.querySelectorAll('.skill-bar');
     skillBars.forEach(bar => {
       const percentage = bar.dataset.percentage;
+      const fill = bar.querySelector('.skill-fill');
       
-      // Animate skill bar fill
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const fill = entry.target.querySelector('.skill-fill');
-            if (fill) {
-              fill.style.width = `${percentage}%`;
-            }
+      if (fill) {
+        gsap.fromTo(fill, {
+          width: '0%'
+        }, {
+          width: `${percentage}%`,
+          duration: 1.5,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: bar,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
           }
         });
-      });
-      
-      observer.observe(bar);
+      }
     });
   }, []);
 
-  const tools = skillCategories.flatMap(category => 
-    category.skills.slice(0, 3).map(skill => skill.name.split(' / ')[0])
-  );
+  const skillCategories = [
+    {
+      title: "Frontend Development",
+      skills: [
+        { name: "React / Next.js", level: 95 },
+        { name: "JavaScript / TypeScript", level: 90 },
+        { name: "HTML5 / CSS3", level: 95 },
+        { name: "GSAP / Framer Motion", level: 85 },
+        { name: "Tailwind CSS", level: 90 }
+      ]
+    },
+    {
+      title: "Backend Development",
+      skills: [
+        { name: "Node.js / Express", level: 88 },
+        { name: "Python / Django", level: 82 },
+        { name: "PostgreSQL / MongoDB", level: 85 },
+        { name: "GraphQL / REST APIs", level: 87 },
+        { name: "AWS / Docker", level: 80 }
+      ]
+    },
+    {
+      title: "Creative & Design",
+      skills: [
+        { name: "UI/UX Design", level: 85 },
+        { name: "Adobe Creative Suite", level: 78 },
+        { name: "Figma / Sketch", level: 90 },
+        { name: "3D Graphics / WebGL", level: 75 },
+        { name: "Motion Design", level: 80 }
+      ]
+    }
+  ];
+
+  const tools = [
+    "React", "Node.js", "Python", "TypeScript", "GSAP", "Three.js",
+    "Docker", "AWS", "MongoDB", "PostgreSQL", "Figma", "Adobe XD"
+  ];
 
   return (
     <section className="skills py-20 px-4 fade-in-section">
@@ -51,10 +82,10 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="stagger-container grid lg:grid-cols-3 gap-12 mb-16">
+        <div className="grid lg:grid-cols-3 gap-12 mb-16">
           {skillCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="stagger-item">
-              <h3 className="text-xl font-sora font-bold text-gray-900 mb-6">
+            <div key={categoryIndex} className="skill-category">
+              <h3 className="text-xl font-bold text-gray-900 mb-6 font-sora">
                 {category.title}
               </h3>
               
@@ -62,10 +93,10 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="skill-item">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-inter text-gray-700">
+                      <span className="text-sm text-gray-700 font-inter">
                         {skill.name}
                       </span>
-                      <span className="text-xs font-inter text-gray-500">
+                      <span className="text-xs text-gray-500 font-inter">
                         {skill.level}%
                       </span>
                     </div>
@@ -75,7 +106,7 @@ const Skills = () => {
                       data-percentage={skill.level}
                     >
                       <div 
-                        className="skill-fill h-full bg-gradient-to-r from-dark-red to-light-red transition-all duration-1000 ease-out"
+                        className="skill-fill h-full bg-gradient-to-r from-red-800 to-red-600 transition-all duration-1000 ease-out"
                         style={{ width: '0%' }}
                       ></div>
                     </div>
@@ -113,21 +144,40 @@ const Skills = () => {
           </h3>
           
           <div className="space-y-8 max-w-3xl mx-auto">
-            {experiences.map((experience, index) => (
-              <div key={index} className="stagger-item flex space-x-6">
+            {[
+              {
+                year: "2023 - Present",
+                title: "Senior Software Engineer",
+                company: "Tech Innovators Inc.",
+                description: "Leading frontend development and mentoring junior developers"
+              },
+              {
+                year: "2021 - 2023",
+                title: "Full Stack Developer",
+                company: "Digital Solutions Co.",
+                description: "Developed scalable web applications and mobile solutions"
+              },
+              {
+                year: "2019 - 2021",
+                title: "Frontend Developer",
+                company: "Creative Agency",
+                description: "Created interactive websites and digital experiences"
+              }
+            ].map((experience, index) => (
+              <div key={index} className="experience-item flex space-x-6">
                 <div className="flex-shrink-0">
-                  <div className="w-4 h-4 bg-dark-red rounded-full mt-1"></div>
+                  <div className="w-4 h-4 bg-red-800 rounded-full mt-1"></div>
                   {index < 2 && <div className="w-0.5 h-16 bg-gray-300 ml-1.5 mt-2"></div>}
                 </div>
                 
                 <div className="flex-grow">
-                  <div className="text-sm font-inter text-gray-500 uppercase tracking-wider mb-1">
+                  <div className="text-sm text-gray-500 uppercase tracking-wider mb-1 font-inter">
                     {experience.year}
                   </div>
-                  <h4 className="text-lg font-sora font-bold text-gray-900 mb-1">
+                  <h4 className="text-lg font-bold text-gray-900 mb-1 font-sora">
                     {experience.title}
                   </h4>
-                  <div className="text-sm font-inter text-dark-red mb-2">
+                  <div className="text-sm text-red-800 mb-2 font-inter">
                     {experience.company}
                   </div>
                   <p className="text-gray-600 font-inter">
