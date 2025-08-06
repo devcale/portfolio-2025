@@ -59,7 +59,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-gray-900 mb-6">
+          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 font-playfair">
             Let's Work Together
           </h2>
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-8 font-inter">
@@ -72,7 +72,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-sora font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-playfair">
                 Ready to start your project?
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed font-inter mb-8">
@@ -94,7 +94,7 @@ const Contact = () => {
                     <link.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900 group-hover:text-red-800 transition-colors font-sora">
+                    <div className="font-bold text-gray-900 group-hover:text-red-800 transition-colors font-playfair">
                       {link.name}
                     </div>
                     <div className="text-sm text-gray-600 font-inter">
@@ -109,7 +109,7 @@ const Contact = () => {
             <div className="p-6 bg-white rounded-xl shadow-lg">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-bold text-gray-900 font-sora">Available for new projects</span>
+                <span className="font-bold text-gray-900 font-playfair">Available for new projects</span>
               </div>
               <p className="text-sm text-gray-600 font-inter">
                 Currently accepting new freelance projects and collaboration opportunities.

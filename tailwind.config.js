@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        'playfair': ['Playfair Display', 'serif'],
         'inter': ['Inter', 'sans-serif'],
-        'sora': ['Sora', 'sans-serif'],
       },
       colors: {
         'dark-red': '#8B0000',

@@ -8,7 +8,7 @@ const About = () => {
           {/* Text Content */}
           <div className="space-y-8">
             <div>
-              <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-gray-900 mb-6">
+              <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 font-playfair">
                 About
               </h2>
               <p className="text-xs uppercase tracking-widest text-gray-500 mb-8 font-inter">
@@ -39,15 +39,15 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
               <div className="text-center">
-                <div className="text-2xl font-bold text-dark-red font-sora">5+</div>
+                <div className="text-2xl font-bold text-red-800 font-playfair">5+</div>
                 <div className="text-sm uppercase tracking-wider text-gray-600 font-inter">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-dark-red font-sora">50+</div>
+                <div className="text-2xl font-bold text-red-800 font-playfair">50+</div>
                 <div className="text-sm uppercase tracking-wider text-gray-600 font-inter">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-dark-red font-sora">15+</div>
+                <div className="text-2xl font-bold text-red-800 font-playfair">15+</div>
                 <div className="text-sm uppercase tracking-wider text-gray-600 font-inter">Technologies</div>
               </div>
             </div>
@@ -58,7 +58,7 @@ const About = () => {
             <div className="relative aspect-square overflow-hidden rounded-2xl">
               {/* Placeholder for portrait - replace with actual image */}
               <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                <div className="text-6xl font-sora font-bold text-gray-400">NC</div>
+                <div className="text-6xl font-bold text-gray-400 font-playfair">NC</div>
               </div>
               
               {/* Glass overlay */}
@@ -68,7 +68,7 @@ const About = () => {
             {/* Floating badge */}
             <div className="absolute -top-4 -right-4 glass-dark rounded-full p-6">
               <div className="text-center">
-                <div className="text-sm font-bold text-white font-sora">Available</div>
+                <div className="text-sm font-bold text-white font-playfair">Available</div>
                 <div className="text-xs text-white/80 font-inter">For Projects</div>
               </div>
             </div>

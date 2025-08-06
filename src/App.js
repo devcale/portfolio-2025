@@ -20,19 +20,26 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Initialize basic scroll animations
-    gsap.utils.toArray('.fade-in-section').forEach(section => {
-      gsap.from(section, {
-        duration: 1,
-        y: 50,
-        opacity: 0,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
+    // Simple fade-in animations for sections
+    gsap.utils.toArray('.fade-in-section').forEach((section, index) => {
+      gsap.fromTo(section, 
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out',
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            once: true // Only animate once
+          }
         }
-      });
+      );
     });
 
     // Simulate preloader timing

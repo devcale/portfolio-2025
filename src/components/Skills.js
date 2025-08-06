@@ -72,7 +72,7 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-gray-900 mb-6">
+          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 font-playfair">
             Skills & Expertise
           </h2>
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-8 font-inter">
@@ -85,7 +85,7 @@ const Skills = () => {
         <div className="grid lg:grid-cols-3 gap-12 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="skill-category">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 font-sora">
+              <h3 className="text-xl font-bold text-gray-900 mb-6 font-playfair">
                 {category.title}
               </h3>
               
@@ -119,7 +119,7 @@ const Skills = () => {
 
         {/* Tools Cloud */}
         <div className="text-center">
-          <h3 className="text-2xl font-sora font-bold text-gray-900 mb-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-playfair">
             Favorite Tools & Technologies
           </h3>
           
@@ -139,7 +139,7 @@ const Skills = () => {
 
         {/* Experience Timeline */}
         <div className="mt-20">
-          <h3 className="text-2xl font-sora font-bold text-gray-900 mb-12 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-12 text-center font-playfair">
             Professional Journey
           </h3>
           
@@ -174,7 +174,7 @@ const Skills = () => {
                   <div className="text-sm text-gray-500 uppercase tracking-wider mb-1 font-inter">
                     {experience.year}
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-1 font-sora">
+                  <h4 className="text-lg font-bold text-gray-900 mb-1 font-playfair">
                     {experience.title}
                   </h4>
                   <div className="text-sm text-red-800 mb-2 font-inter">

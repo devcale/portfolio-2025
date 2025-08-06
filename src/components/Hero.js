@@ -45,7 +45,7 @@ const Hero = () => {
         {/* Hero Title */}
         <h1 
           ref={titleRef}
-          className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight font-sora"
+          className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight font-playfair"
         >
           Nicolás Calero
         </h1>

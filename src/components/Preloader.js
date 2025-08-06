@@ -37,7 +37,7 @@ const Preloader = ({ onComplete }) => {
     <div className="preloader fixed inset-0 bg-white z-50 flex flex-col items-center justify-center">
       {/* Logo Animation */}
       <div className="preloader-logo mb-8">
-        <h1 className="text-6xl md:text-8xl font-bold text-gray-900 font-sora">
+        <h1 className="text-6xl md:text-8xl font-bold text-gray-900 font-playfair">
           NC
         </h1>
       </div>

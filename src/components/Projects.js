@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   useEffect(() => {
-    // Simple scroll animation for project cards
-    gsap.utils.toArray('.project-card').forEach((card, index) => {
-      gsap.from(card, {
-        duration: 0.8,
-        y: 50,
-        opacity: 0,
-        delay: index * 0.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
+    // Simple intersection observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
       });
+    }, { threshold: 0.1 });
+
+    // Observe all project cards
+    document.querySelectorAll('.project-card').forEach((card) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
     });
+
+    return () => observer.disconnect();
   }, []);
 
   const projects = [
@@ -64,7 +64,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-gray-900 mb-6">
+          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 font-playfair">
             Selected Projects
           </h2>
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-8 font-inter">
@@ -82,14 +82,14 @@ const Projects = () => {
             >
               {/* Project Image */}
               <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
-                <span className="text-4xl font-bold text-gray-500 font-sora">
+                <span className="text-4xl font-bold text-gray-500 font-playfair">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="text-white text-xl font-bold mb-2 font-sora">
+                    <h3 className="text-white text-xl font-bold mb-2 font-playfair">
                       {project.title}
                     </h3>
                     
@@ -116,7 +116,7 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 font-sora">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 font-playfair">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 mb-4 leading-relaxed font-inter">
