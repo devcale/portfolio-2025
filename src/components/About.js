@@ -1,4 +1,5 @@
 import React from 'react';
+import portrait from '../assets/portrait.jpg';
 
 const About = () => {
   return (
@@ -55,21 +56,25 @@ const About = () => {
           
           {/* Portrait */}
           <div className="relative">
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
-              {/* Placeholder for portrait - replace with actual image */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                <div className="text-6xl font-bold text-gray-400 font-playfair">NC</div>
-              </div>
+            <div className="relative aspect-square overflow-hidden transform-gpu transition-transform duration-300 hover:scale-[1.02] hover:rotate-2">
+              {/* Glass border container */}
+              <div className="absolute inset-0 glass rounded-2xl"></div>
               
-              {/* Glass overlay */}
-              <div className="absolute inset-0 glass pointer-events-none"></div>
+              {/* Image container with smaller border radius */}
+              <div className="absolute inset-[3px] rounded-xl overflow-hidden">
+                <img 
+                  src={portrait} 
+                  alt="Nicolás Calero"
+                  className="w-full h-full object-cover transition-transform duration-300"
+                />
+              </div>
             </div>
             
             {/* Floating badge */}
             <div className="absolute -top-4 -right-4 glass-dark rounded-full p-6">
               <div className="text-center">
-                <div className="text-sm font-bold text-white font-playfair">Available</div>
-                <div className="text-xs text-white/80 font-inter">For Projects</div>
+                <div className="text-sm font-bold text-white font-playfair">Let's Craft Together!</div>
+                <div className="text-xs text-white/80 font-inter">Contact Details Below</div>
               </div>
             </div>
             

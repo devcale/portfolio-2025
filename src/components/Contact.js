@@ -37,14 +37,14 @@ const Contact = () => {
     {
       name: 'Email',
       icon: Mail,
-      href: 'mailto:nicolas@example.com',
-      label: 'nicolas@example.com'
+      href: 'mailto:nicolas.calero1@gmail.com?subject=Want to build something new?&body=Hello Nicolás,',
+      label: 'nicolas.calero1@gmail.com'
     },
     {
       name: 'GitHub',
       icon: Github,
-      href: 'https://github.com/nicolascalero',
-      label: '@nicolascalero'
+      href: 'https://github.com/devcale',
+      label: '@devcale'
     },
     {
       name: 'LinkedIn',

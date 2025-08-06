@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { skillCategories, favoriteTools, experiences } from '../utils/data';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,43 +30,7 @@ const Skills = () => {
     });
   }, []);
 
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: [
-        { name: "React / Next.js", level: 95 },
-        { name: "JavaScript / TypeScript", level: 90 },
-        { name: "HTML5 / CSS3", level: 95 },
-        { name: "GSAP / Framer Motion", level: 85 },
-        { name: "Tailwind CSS", level: 90 }
-      ]
-    },
-    {
-      title: "Backend Development",
-      skills: [
-        { name: "Node.js / Express", level: 88 },
-        { name: "Python / Django", level: 82 },
-        { name: "PostgreSQL / MongoDB", level: 85 },
-        { name: "GraphQL / REST APIs", level: 87 },
-        { name: "AWS / Docker", level: 80 }
-      ]
-    },
-    {
-      title: "Creative & Design",
-      skills: [
-        { name: "UI/UX Design", level: 85 },
-        { name: "Adobe Creative Suite", level: 78 },
-        { name: "Figma / Sketch", level: 90 },
-        { name: "3D Graphics / WebGL", level: 75 },
-        { name: "Motion Design", level: 80 }
-      ]
-    }
-  ];
 
-  const tools = [
-    "React", "Node.js", "Python", "TypeScript", "GSAP", "Three.js",
-    "Docker", "AWS", "MongoDB", "PostgreSQL", "Figma", "Adobe XD"
-  ];
 
   return (
     <section className="skills py-20 px-4 fade-in-section">
@@ -124,7 +89,7 @@ const Skills = () => {
           </h3>
           
           <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {tools.map((tool, index) => (
+            {favoriteTools.map((tool, index) => (
               <div 
                 key={index}
                 className="skill-item px-6 py-3 bg-white shadow-lg rounded-full hover:shadow-xl transition-all duration-300 cursor-pointer group"
@@ -144,26 +109,7 @@ const Skills = () => {
           </h3>
           
           <div className="space-y-8 max-w-3xl mx-auto">
-            {[
-              {
-                year: "2023 - Present",
-                title: "Senior Software Engineer",
-                company: "Tech Innovators Inc.",
-                description: "Leading frontend development and mentoring junior developers"
-              },
-              {
-                year: "2021 - 2023",
-                title: "Full Stack Developer",
-                company: "Digital Solutions Co.",
-                description: "Developed scalable web applications and mobile solutions"
-              },
-              {
-                year: "2019 - 2021",
-                title: "Frontend Developer",
-                company: "Creative Agency",
-                description: "Created interactive websites and digital experiences"
-              }
-            ].map((experience, index) => (
+            {experiences.map((experience, index) => (
               <div key={index} className="experience-item flex space-x-6">
                 <div className="flex-shrink-0">
                   <div className="w-4 h-4 bg-red-800 rounded-full mt-1"></div>
@@ -177,12 +123,32 @@ const Skills = () => {
                   <h4 className="text-lg font-bold text-gray-900 mb-1 font-playfair">
                     {experience.title}
                   </h4>
-                  <div className="text-sm text-red-800 mb-2 font-inter">
-                    {experience.company}
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-sm text-red-800 font-inter">
+                      {experience.company}
+                    </span>
+                    {experience.team && (
+                      <>
+                        <span className="text-gray-400">•</span>
+                        <span className="text-sm text-gray-600 font-inter">
+                          {experience.team}
+                        </span>
+                      </>
+                    )}
                   </div>
                   <p className="text-gray-600 font-inter">
                     {experience.description}
                   </p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {experience.tech.map((tech, techIndex) => (
+                      <span 
+                        key={techIndex}
+                        className="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full font-inter"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

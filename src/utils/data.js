@@ -55,53 +55,50 @@ export const projects = [
 ];
 
 
-// Skills data
+// Favorite tools and technologies
+export const favoriteTools = [
+  "C++",
+  "Go",
+  "Python",
+  "React",
+  "Jenkins",
+  "DynamoDB",
+  "PostgreSQL",
+  "Microservices",
+  "CI/CD",
+  "Git",
+  "Unity"
+];
+
 export const skillCategories = [
   {
     title: "Frontend Development",
     icon: "💻",
     skills: [
-      { name: "React / Next.js", level: 95, category: "framework" },
-      { name: "JavaScript / TypeScript", level: 92, category: "language" },
-      { name: "HTML5 / CSS3", level: 95, category: "markup" },
-      { name: "GSAP / Framer Motion", level: 88, category: "animation" },
-      { name: "Tailwind CSS / Styled Components", level: 90, category: "styling" },
-      { name: "Vue.js / Nuxt.js", level: 78, category: "framework" },
-      { name: "WebGL / Three.js", level: 75, category: "graphics" }
+      { name: "React / Next.js", level: 85, category: "framework" },
+      { name: "HTML5 / CSS3", level: 90, category: "markup" },
+      { name: "GSAP / Framer Motion", level: 85, category: "animation" },
+      { name: "Tailwind CSS", level: 85, category: "styling" }
     ]
   },
   {
     title: "Backend Development",
     icon: "⚙️",
     skills: [
-      { name: "Node.js / Express", level: 90, category: "runtime" },
-      { name: "Python / Django / FastAPI", level: 85, category: "language" },
-      { name: "PostgreSQL / MongoDB", level: 87, category: "database" },
-      { name: "GraphQL / REST APIs", level: 89, category: "api" },
-      { name: "Redis / ElasticSearch", level: 80, category: "database" },
-      { name: "Microservices Architecture", level: 82, category: "architecture" }
+      { name: "C++ / Go / Python / Java", level: 90, category: "language" },
+      { name: "Flask / FastAPI / Node.js", level: 80, category: "framework" },
+      { name: "PostgreSQL / DynamoDB / MongoDB", level: 85, category: "database" },
+      { name: "Jenkins / Git / CI/CD", level: 85, category: "devops" }
     ]
   },
   {
-    title: "DevOps & Cloud",
-    icon: "☁️",
+    title: "Architecture & Tooling",
+    icon: "🧱",
     skills: [
-      { name: "AWS / Azure", level: 83, category: "cloud" },
-      { name: "Docker / Kubernetes", level: 80, category: "containerization" },
-      { name: "CI/CD Pipelines", level: 85, category: "automation" },
-      { name: "Terraform / CloudFormation", level: 75, category: "iac" },
-      { name: "Monitoring & Logging", level: 78, category: "observability" }
-    ]
-  },
-  {
-    title: "Design & Creative",
-    icon: "🎨",
-    skills: [
-      { name: "UI/UX Design", level: 88, category: "design" },
-      { name: "Figma / Adobe XD", level: 92, category: "tool" },
-      { name: "Adobe Creative Suite", level: 80, category: "tool" },
-      { name: "Motion Design", level: 85, category: "animation" },
-      { name: "User Research", level: 75, category: "research" }
+      { name: "Microservices Architecture", level: 85, category: "architecture" },
+      { name: "Test-Driven Development (TDD)", level: 80, category: "testing" },
+      { name: "Continuous Integration & Delivery", level: 85, category: "automation" },
+      { name: "Source Control (Git)", level: 90, category: "tools" }
     ]
   }
 ];
@@ -109,46 +106,44 @@ export const skillCategories = [
 // Experience data
 export const experiences = [
   {
-    year: "2023 - Present",
-    title: "Senior Software Engineer",
-    company: "Tech Innovators Inc.",
+    year: "2024 - Present",
+    title: "Software Development Engineer",
+    company: "Amadeus",
     location: "Bogotá, Colombia",
-    description: "Leading frontend development for enterprise applications, mentoring junior developers, and architecting scalable solutions using React, Node.js, and cloud technologies.",
+    description: "Developed fault-tolerant systems for real-time airline disruption reaccommodation, improving eligibility logic and batch processing.",
     highlights: [
-      "Led development of a microservices architecture serving 100k+ users",
-      "Improved application performance by 40% through optimization",
-      "Mentored 5 junior developers in modern web development practices",
-      "Implemented CI/CD pipelines reducing deployment time by 60%"
+      "Reduced manual processing with self-service downgrade detection",
+      "Processed 100k+ passengers per batch with rollback retry mechanism",
+      "Integrated flight delay eligibility logic into real-time systems",
+      "Maintained CI/CD pipelines and improved test automation"
     ],
-    tech: ["React", "Node.js", "AWS", "Docker", "GraphQL"]
+    tech: ["C++", "Jenkins", "CI/CD", "Microservices", "Git"]
   },
   {
-    year: "2021 - 2023",
-    title: "Full Stack Developer",
-    company: "Digital Solutions Co.",
+    year: "2023 - 2024",
+    title: "Software Developer",
+    company: "IT270 - Backend Development Team",
     location: "Bogotá, Colombia",
-    description: "Developed and maintained web applications and mobile solutions, working closely with design and product teams to deliver exceptional user experiences.",
+    description: "Maintained 10+ microservices for a medical platform, delivering rapid fixes and enhancements to boost system stability.",
     highlights: [
-      "Built 15+ web applications using React and Node.js",
-      "Developed mobile apps with React Native for iOS and Android",
-      "Collaborated with UX team to improve user engagement by 35%",
-      "Integrated third-party APIs and payment systems"
+      "Completed 50+ high-priority features and fixes in 2 months",
+      "Reduced system downtime and improved user satisfaction",
+      "Implemented cross-functional process improvements"
     ],
-    tech: ["React", "React Native", "Python", "PostgreSQL", "AWS"]
+    tech: ["Python", "PostgreSQL", "Agile", "CI/CD"]
   },
   {
-    year: "2019 - 2021",
-    title: "Frontend Developer",
-    company: "Creative Agency",
-    location: "Bogotá, Colombia",
-    description: "Created interactive websites and digital experiences for various clients, focusing on animation, performance, and responsive design.",
+    year: "2022",
+    title: "Software Engineer Intern",
+    company: "Twilio",
+    location: "Remote (US-based)",
+    description: "Built contextual authentication service for Authy, integrating device-based detection and AWS-hosted storage.",
     highlights: [
-      "Developed 20+ client websites with custom animations",
-      "Achieved 95+ PageSpeed scores on all projects",
-      "Specialized in GSAP animations and WebGL experiences",
-      "Worked with international clients across various industries"
+      "90%+ test coverage using Go’s native testing tools",
+      "Improved performance with optimized DynamoDB usage",
+      "Contributed to secure login detection logic"
     ],
-    tech: ["JavaScript", "GSAP", "Three.js", "WordPress", "SCSS"]
+    tech: ["Go", "DynamoDB", "Security", "Unit Testing"]
   }
 ];
 
@@ -156,9 +151,9 @@ export const experiences = [
 export const socialLinks = [
   {
     name: 'Email',
-    url: 'mailto:nicolas.calero@example.com',
+    url: 'mailto:nicolas.calero1@gmail.com',
     icon: 'Mail',
-    label: 'nicolas.calero@example.com'
+    label: 'nicolas.calero1@gmail.com'
   },
   {
     name: 'GitHub',
@@ -171,30 +166,21 @@ export const socialLinks = [
     url: 'https://linkedin.com/in/nicolascalero',
     icon: 'Linkedin',
     label: '/in/nicolascalero'
-  },
-  {
-    name: 'Twitter',
-    url: 'https://twitter.com/nicolascalero',
-    icon: 'Twitter',
-    label: '@nicolascalero'
-  },
-  {
-    name: 'Dribbble',
-    url: 'https://dribbble.com/nicolascalero',
-    icon: 'Dribbble',
-    label: '@nicolascalero'
   }
 ];
 
 // Site metadata
 export const siteMetadata = {
   title: "Nicolás Calero - Software Engineer & Creative Technologist",
-  description: "Portfolio of Nicolás Calero, a software engineer and creative technologist from Bogotá, Colombia, specializing in React, GSAP animations, and modern web development.",
+  description: "Portfolio of Nicolás Calero, a software engineer from Bogotá, Colombia, specialized in backend systems, fault tolerance, and creative technology using React, C++, Go, and GSAP.",
   author: "Nicolás Calero",
   location: "Bogotá, Colombia",
-  email: "nicolas.calero@example.com",
-  phone: "+57 300 123 4567",
-  website: "https://nicolascalero.dev",
-  keywords: ["Software Engineer", "Creative Technologist", "React Developer", "GSAP Animations", "Web Development", "Bogotá"],
+  email: "nicolas.calero1@gmail.com",
+  phone: "+57 318 364 9884",
+  website: "https://devcale.github.io",
+  keywords: [
+    "Software Engineer", "Creative Technologist", "C++ Developer", "Go Developer",
+    "React Developer", "Microservices", "GSAP", "Bogotá", "Fault Tolerance", "Amadeus", "Twilio"
+  ],
   image: "/og-image.jpg"
 };
