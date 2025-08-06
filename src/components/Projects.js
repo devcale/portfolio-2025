@@ -1,5 +1,16 @@
 import React, { useEffect } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { projects } from '../utils/data';
+import disruptionImg from '../assets/projects/disruption.jpg';
+import contextualImg from '../assets/projects/contextual.jpg';
+import medicalImg from '../assets/projects/medical.jpg';
+import wizardChessImg from '../assets/projects/wizardchess.png';
+
+const projectImages = {
+  'Disruption Self-Service Engine': disruptionImg,
+  'Contextual Authentication Service': contextualImg,
+  'MetricsMed Platform': medicalImg,
+  'VR Chess Game for Accessibility': wizardChessImg
+};
 
 const Projects = () => {
   useEffect(() => {
@@ -24,40 +35,7 @@ const Projects = () => {
     return () => observer.disconnect();
   }, []);
 
-  const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      description: "A modern, fully responsive e-commerce platform built with React and Node.js",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    },
-    {
-      id: 2,
-      title: "AI-Powered Analytics Dashboard",
-      description: "Real-time analytics dashboard with machine learning insights",
-      tech: ["React", "Python", "TensorFlow", "D3.js"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    },
-    {
-      id: 3,
-      title: "Mobile Banking App",
-      description: "Secure mobile banking application with biometric authentication",
-      tech: ["React Native", "Node.js", "PostgreSQL", "AWS"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    },
-    {
-      id: 4,
-      title: "IoT Smart Home System",
-      description: "Complete IoT ecosystem for smart home automation and monitoring",
-      tech: ["React", "Arduino", "Python", "MQTT"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    }
-  ];
+
 
   return (
     <section className="projects py-20 px-4 bg-gray-50 fade-in-section">
@@ -81,34 +59,26 @@ const Projects = () => {
               className="project-card group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500"
             >
               {/* Project Image */}
-              <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
-                <span className="text-4xl font-bold text-gray-500 font-playfair">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+              <div className="relative aspect-video overflow-hidden">
+                <img 
+                  src={projectImages[project.title]} 
+                  alt={`${project.title} - ${project.company}`}
+                  className="w-full h-full object-cover"
+                />
                 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="text-white text-xl font-bold mb-2 font-playfair">
-                      {project.title}
-                    </h3>
-                    
-                    {/* Action Buttons */}
-                    <div className="flex space-x-3">
-                      <a 
-                        href={project.demo}
-                        className="flex items-center space-x-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="text-sm">Demo</span>
-                      </a>
-                      <a 
-                        href={project.github}
-                        className="flex items-center space-x-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors"
-                      >
-                        <Github className="w-4 h-4" />
-                        <span className="text-sm">Code</span>
-                      </a>
+                    <div className="flex flex-col space-y-2">
+                      <h3 className="text-white text-xl font-bold font-playfair">
+                        {project.title}
+                      </h3>
+                      <span className="text-white/80 text-sm font-inter">
+                        {project.company}
+                      </span>
+                      <div className="text-white/60 text-sm font-inter mt-2">
+                        {project.longDescription}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -116,9 +86,14 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 font-playfair">
-                  {project.title}
-                </h3>
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 font-playfair">
+                    {project.title}
+                  </h3>
+                  <span className="text-sm text-gray-500 font-inter">
+                    {project.company}
+                  </span>
+                </div>
                 <p className="text-gray-600 mb-4 leading-relaxed font-inter">
                   {project.description}
                 </p>

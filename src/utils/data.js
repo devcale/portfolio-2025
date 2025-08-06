@@ -2,70 +2,58 @@
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A modern, fully responsive e-commerce platform built with React and Node.js, featuring real-time inventory management, payment processing, and admin dashboard.",
-    longDescription: "This comprehensive e-commerce solution provides a seamless shopping experience with advanced features like real-time inventory tracking, multiple payment gateways, order management, and detailed analytics. Built with modern technologies for scalability and performance.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe", "Redis", "AWS"],
-    image: "/placeholder-project-1.jpg",
-    github: "https://github.com/nicolascalero/ecommerce-platform",
-    demo: "https://ecommerce-demo.vercel.app",
-    category: "Full Stack",
+    title: "Disruption Self-Service Engine",
+    description: "C++ system enabling real-time flight disruption reaccommodation for 100,000+ passengers per batch.",
+    longDescription: "At Amadeus, I developed fault-tolerant systems that process high-volume reaccommodation scenarios with rollback capabilities and cabin downgrade detection. This project significantly reduced manual intervention while improving real-time eligibility based on live flight delays.",
+    tech: ["C++", "Microservices", "Jenkins", "CI/CD", "Git"],
+    image: "/amadeus-project.jpg",
+    github: "", // Internal project
+    demo: "", // Internal project
+    category: "Backend",
     featured: true,
     year: "2024"
   },
   {
     id: 2,
-    title: "AI-Powered Analytics Dashboard",
-    description: "Real-time analytics dashboard with machine learning insights, predictive analytics, and interactive data visualizations.",
-    longDescription: "An intelligent analytics platform that processes large datasets in real-time, applies machine learning algorithms for predictive insights, and presents data through beautiful, interactive visualizations. Features custom chart components and AI-driven recommendations.",
-    tech: ["React", "Python", "TensorFlow", "D3.js", "FastAPI", "PostgreSQL"],
-    image: "/placeholder-project-2.jpg",
-    github: "https://github.com/nicolascalero/ai-analytics",
-    demo: "https://analytics-dashboard-demo.vercel.app",
-    category: "Data Science",
+    title: "Contextual Authentication Service",
+    description: "Security microservice to prevent malicious logins using contextual device data.",
+    longDescription: "At Twilio, I built a contextual authentication system for Authy, leveraging device metadata and AWS DynamoDB for real-time fraud prevention. Achieved over 90% unit and integration test coverage using Go's native tools.",
+    tech: ["Go", "AWS DynamoDB", "Security", "Go Testing", "Microservices"],
+    image: "/twilio-auth.jpg",
+    github: "", // Internal project
+    demo: "", // Internal project
+    category: "Security",
     featured: true,
-    year: "2024"
+    year: "2022"
   },
   {
     id: 3,
-    title: "Mobile Banking App",
-    description: "Secure mobile banking application with biometric authentication, real-time transactions, and comprehensive financial management tools.",
-    longDescription: "A secure, feature-rich mobile banking application that prioritizes user security and experience. Includes biometric authentication, real-time transaction processing, budget tracking, investment portfolio management, and AI-powered financial insights.",
-    tech: ["React Native", "Node.js", "PostgreSQL", "AWS", "Biometric SDK"],
-    image: "/placeholder-project-3.jpg",
-    github: "https://github.com/nicolascalero/mobile-banking",
-    demo: "https://banking-app-demo.vercel.app",
-    category: "Mobile",
-    featured: true,
-    year: "2023"
+    title: "MetricsMed Platform",
+    description: "Medical data platform with over 10 microservices and real-time analytics.",
+    longDescription: "Developed and maintained 10+ backend microservices for a medical platform at IT270. Delivered 50+ high-priority features and bug fixes over two months, significantly improving system uptime and user satisfaction.",
+    tech: ["Python", "Microservices", "PostgreSQL", "CI/CD", "Agile"],
+    image: "/metricsmed.jpg",
+    github: "", // Internal project
+    demo: "", // Internal project
+    category: "Healthcare",
+    featured: false,
+    year: "2024"
   },
   {
     id: 4,
-    title: "IoT Smart Home System",
-    description: "Complete IoT ecosystem for smart home automation, device monitoring, and intelligent energy management.",
-    longDescription: "An integrated IoT platform that connects and manages smart home devices, provides real-time monitoring, automates routines based on user behavior, and optimizes energy consumption. Features a custom dashboard and mobile app for remote control.",
-    tech: ["React", "Arduino", "Python", "MQTT", "InfluxDB", "Grafana"],
-    image: "/placeholder-project-4.jpg",
-    github: "https://github.com/nicolascalero/smart-home",
-    demo: "https://smart-home-demo.vercel.app",
-    category: "IoT",
-    featured: false,
-    year: "2023"
-  },
-  {
-    id: 5,
-    title: "Real-time Collaboration Tool",
-    description: "Web-based collaboration platform with real-time editing, video conferencing, and project management features.",
-    longDescription: "A comprehensive collaboration suite that enables teams to work together seamlessly with real-time document editing, integrated video conferencing, task management, and team analytics. Built for scalability and performance.",
-    tech: ["React", "Socket.io", "WebRTC", "Node.js", "MongoDB"],
-    image: "/placeholder-project-5.jpg",
-    github: "https://github.com/nicolascalero/collaboration-tool",
-    demo: "https://collab-demo.vercel.app",
-    category: "Web App",
+    title: "VR Chess Game for Accessibility",
+    description: "Interactive VR chess game with voice command support for physically impaired players.",
+    longDescription: "Developed as a university project, this VR game in Unity (C#) allows users with physical disabilities to play chess using voice control. Focused on inclusive game design and immersive experience.",
+    tech: ["C#", "Unity", "Voice API", "VR"],
+    image: "/vr-chess.jpg",
+    github: "https://github.com/nicolascalero/vr-chess",
+    demo: "",
+    category: "Games",
     featured: false,
     year: "2023"
   }
 ];
+
 
 // Skills data
 export const skillCategories = [
